@@ -1,0 +1,14 @@
+{
+    "coin_name": "Bitcoin",
+    "coin_shortcut": "BTC",
+    "coin_label": "Bitcoin",
+    "rpc_url": "http://@RPC_HOST@:@RPC_PORT@",
+    "rpc_user": "@RPC_USER@",
+    "rpc_pass": "@RPC_PASS@",
+    "rpc_timeout": 25,
+    "parse": true,
+    "message_queue_binding": "tcp://@RPC_HOST@:@MQ_PORT@",
+    "subversion": "",
+    "address_format": "",
+    "block_addresses_to_keep": 300
+}
