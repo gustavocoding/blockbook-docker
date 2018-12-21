@@ -13,5 +13,5 @@ It will start syncing and the progress can be checked at https://localhost:9130
 
 ## Stopping gracefully
 
-To stop the container gracefully (and have the database files preserved), do a ```docker stop blockbook``` and to restart it later, ```docker start blockbook```.
+To stop the container gracefully (and have the database files preserved), do a ```docker stop -t 60 blockbook``` and to restart it later, ```docker start blockbook```.
 
