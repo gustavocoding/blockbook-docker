@@ -14,4 +14,4 @@ sed -i 's/@RPC_HOST@/'"$RPC_HOST"'/g' $CFG_FILE
 sed -i 's/@RPC_PORT@/'"$RPC_PORT"'/' $CFG_FILE 
 sed -i 's/@MQ_PORT@/'"$MQ_PORT"'/' $CFG_FILE 
 
-cd $GOPATH/src/blockbook && exec ./blockbook -dbcache=0 -workers=2 -sync -blockchaincfg=$HOME/blockchain_cfg.json -internal=:9030 -public=:9130 -certfile=server/testcert -logtostderr
+cd $GOPATH/src/blockbook && exec ./blockbook -sync -blockchaincfg=$HOME/blockchain_cfg.json -internal=:9030 -public=:9130 -certfile=server/testcert -logtostderr
