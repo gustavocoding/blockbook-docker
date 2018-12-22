@@ -23,7 +23,9 @@ If more control is desired, like using custom flags, custom configuration files,
 
 
 ```
- docker run -v $PWD/cfg:/home/blockbook/cfg -w=/home/blockbook/go/src/blockbook -it -p 9130:9130 -p 9030:9030 --entrypoint=/home/blockbook/go/src/blockbook/blockbook gustavonalle/blockbook -sync -blockchaincfg=/home/blockbook/cfg/cfg.json -workers=10  -logtostderr
+ docker run -v $PWD/cfg:/home/blockbook/cfg -w=/home/blockbook/go/src/blockbook -it -p 9130:9130 \
+ -p 9030:9030 --entrypoint=/home/blockbook/go/src/blockbook/blockbook gustavonalle/blockbook \ 
+ -sync -blockchaincfg=/home/blockbook/cfg/cfg.json -workers=10  -logtostderr
 ```
 
 The command above will run blockbook with 10 workers, using a custom configuration file called cfg.json, which will come from a volume mapping the local folder cfg to /home/blockbook/cfg inside the container. 
