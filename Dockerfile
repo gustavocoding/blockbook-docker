@@ -2,7 +2,7 @@ FROM fedora:29
 
 MAINTAINER gustavonalle@gmail.com
 
-ENV TAG=v0.1.0
+ENV TAG=v0.1.1
 
 # Install dependencies 
 RUN dnf -y install which libstdc++-devel zeromq zeromq-devel gcc-c++ findutils libstdc++-static golang \
@@ -33,9 +33,11 @@ RUN cd /tmp && git clone https://github.com/facebook/rocksdb.git && cd rocksdb &
 		go get github.com/tecbot/gorocksdb
 
 # Build Blockbook
-RUN cd $GOPATH/src && git clone https://github.com/trezor/blockbook.git && cd blockbook && git checkout $TAG && dep ensure -vendor-only && go build && \
-         rm -Rf /home/blockbook/go/pkg/dep/sources
-
+RUN cd $GOPATH/src && git clone https://github.com/trezor/blockbook.git && cd blockbook && git checkout $TAG && dep ensure -vendor-only && \
+         BUILDTIME=$(date --iso-8601=seconds); GITCOMMIT=$(git describe --always --dirty); \ 
+         LDFLAGS="-X blockbook/common.version=${TAG} -X blockbook/common.gitcommit=${GITCOMMIT} -X blockbook/common.buildtime=${BUILDTIME}" && \ 
+         go build -ldflags="-s -w ${LDFLAGS}" && rm -Rf /home/blockbook/go/pkg/dep/sources
+ 
 # Copy startup scripts
 COPY launch.sh $HOME
 
