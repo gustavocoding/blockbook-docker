@@ -2,6 +2,8 @@ FROM fedora:29
 
 MAINTAINER gustavonalle@gmail.com
 
+ENV TAG=v0.0.6
+
 # Install dependencies 
 RUN dnf -y install which libstdc++-devel zeromq zeromq-devel gcc-c++ findutils libstdc++-static golang \
                    snappy-devel zlib-devel bzip2-devel lz4-libs lz4-devel git && \
@@ -31,7 +33,7 @@ RUN cd /tmp && git clone https://github.com/facebook/rocksdb.git && cd rocksdb &
 		go get github.com/tecbot/gorocksdb
 
 # Build Blockbook
-RUN cd $GOPATH/src && git clone https://github.com/trezor/blockbook.git &&  cd blockbook && dep ensure -vendor-only && go build && \
+RUN cd $GOPATH/src && git clone https://github.com/trezor/blockbook.git && cd blockbook && git checkout $TAG && dep ensure -vendor-only && go build && \
          rm -Rf /home/blockbook/go/pkg/dep/sources
 
 # Copy startup scripts
