@@ -11,7 +11,7 @@ docker run --name blockbook -it -p 9030:9030 -p 9130:9130 -e RPC_USER=myuser -e 
 
 It will start syncing and the progress can be checked at https://localhost:9130
 
-In your Trezor wallet, go to "Wallet Seetings" and in the "Bitcore Server URL" put the URL above.
+In your Trezor wallet, go to "Wallet Settings" and in the "Bitcore Server URL" put the URL above.
 
 
 ## Stopping gracefully
