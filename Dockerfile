@@ -2,7 +2,7 @@ FROM fedora:29
 
 MAINTAINER gustavonalle@gmail.com
 
-ENV TAG=v0.2.0
+ENV TAG=master
 
 # Install dependencies 
 RUN dnf -y install which libstdc++-devel zeromq zeromq-devel gcc-c++ findutils libstdc++-static golang \
