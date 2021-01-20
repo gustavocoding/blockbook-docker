@@ -1,4 +1,4 @@
-FROM fedora:29
+FROM ubuntu:18.04
 
 MAINTAINER gustavonalle@gmail.com
 
